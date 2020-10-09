@@ -64,7 +64,7 @@ public class UploadSheetActivity extends AppCompatActivity {
         deleteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                deleteSelectedFile();
             }
         });
     }
@@ -145,5 +145,21 @@ public class UploadSheetActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "The file does not exist. It has probably been deleted/ moved.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void deleteSelectedFile() {
+        AlertDialog deleteFile = new MaterialAlertDialogBuilder(this)
+                .setTitle("Remove selected file?")
+                .setMessage("The selected file hasn't been uploaded. Are you sure you want to remove the file?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        uploadFileCardView.setVisibility(View.GONE);
+                        uploadFileButton.setVisibility(View.GONE);
+                        selectFileButton.setText("Select your file");
+                    }
+                }).setNegativeButton("No", null)
+                .create();
+        deleteFile.show();
     }
 }
