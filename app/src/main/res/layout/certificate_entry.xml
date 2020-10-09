@@ -29,8 +29,19 @@
         app:layout_constraintTop_toBottomOf="@id/appTitle"
         android:id="@+id/generateOne"
         android:text="Generate one certificate"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="150dp"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/generateOne"
+        android:id="@+id/generateFromCSV"
+        android:text="Generate from a spreadsheet"
+        android:layout_marginTop="20dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
