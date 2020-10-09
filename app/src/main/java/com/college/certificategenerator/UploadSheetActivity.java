@@ -60,4 +60,17 @@ public class UploadSheetActivity extends AppCompatActivity {
         fileType.show();
         fileType.setCanceledOnTouchOutside(false);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String path = data.getData().getPath();
+
+                }
+        }
+    }
 }
