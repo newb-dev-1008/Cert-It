@@ -21,6 +21,7 @@ public class UploadSheetActivity extends AppCompatActivity {
     private TextView uploadProgress, uploadFileName;
     private CardView uploadFileCardView;
     private ProgressBar progressBar;
+    private String path;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,10 +34,20 @@ public class UploadSheetActivity extends AppCompatActivity {
         selectFileButton = findViewById(R.id.uploadSelectFile);
         uploadFileButton = findViewById(R.id.uploadFileButton);
 
+        progressBar = findViewById(R.id.uploadFileProgress);
+        uploadFileCardView = findViewById(R.id.uploadFileCardView);
+
         selectFileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectFile();
+            }
+        });
+
+        uploadFileCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFile();
             }
         });
     }
@@ -72,7 +83,7 @@ public class UploadSheetActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
-                    String path = data.getData().getPath();
+                    path = data.getData().getPath();
                     String[] s = path.split("/");
                     String fileName = s[(s.length - 1)];
                     uploadFileCardView.setVisibility(View.VISIBLE);
@@ -84,8 +95,20 @@ public class UploadSheetActivity extends AppCompatActivity {
                 }
             case 2:
                 if (resultCode == RESULT_OK) {
-
+                    path = data.getData().getPath();
+                    String[] s = path.split("/");
+                    String fileName = s[(s.length - 1)];
+                    uploadFileCardView.setVisibility(View.VISIBLE);
+                    uploadProgress.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.VISIBLE);
+                    uploadFileButton.setVisibility(View.VISIBLE);
+                    selectFileButton.setText("Change selected file");
+                    uploadFileName.setText(fileName);
                 }
         }
+    }
+
+    private void showFile() {
+
     }
 }
