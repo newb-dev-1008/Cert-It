@@ -11,6 +11,9 @@ import com.google.android.material.button.MaterialButton;
 
 public class LandingPage extends AppCompatActivity {
 
+    // Updates
+    // 1. Adding voice assistant
+
     private MaterialButton generateOne, generateMany;
 
     @Override
