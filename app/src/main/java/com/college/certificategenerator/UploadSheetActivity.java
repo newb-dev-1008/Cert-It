@@ -55,6 +55,9 @@ public class UploadSheetActivity extends AppCompatActivity {
                         intent.setType("application/vnd.ms-excel");
                         startActivityForResult(intent, 2);
                     }
-                })
+                }).create();
+
+        fileType.show();
+        fileType.setCanceledOnTouchOutside(false);
     }
 }
