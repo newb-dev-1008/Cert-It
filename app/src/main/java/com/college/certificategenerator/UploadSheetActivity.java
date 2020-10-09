@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 
@@ -157,6 +158,8 @@ public class UploadSheetActivity extends AppCompatActivity {
                         uploadFileCardView.setVisibility(View.GONE);
                         uploadFileButton.setVisibility(View.GONE);
                         selectFileButton.setText("Select your file");
+                        String s1 = "File removed.";
+                        Toast.makeText(UploadSheetActivity.this, "File removed.", Toast.LENGTH_SHORT).show();
                     }
                 }).setNegativeButton("No", null)
                 .create();
