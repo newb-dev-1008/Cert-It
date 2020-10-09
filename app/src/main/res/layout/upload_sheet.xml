@@ -31,7 +31,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/uploadFileButton"
+        android:id="@+id/uploadSelectFile"
         android:text="Select your file"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
         app:cardCornerRadius="8dp"
         android:id="@+id/uploadFileCardView"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/uploadFileButton"
+        app:layout_constraintTop_toBottomOf="@id/uploadSelectFile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
@@ -74,14 +74,41 @@
                 android:layout_toRightOf="@id/uploadFileImg"
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
+                android:id="@+id/uploadFileNameTV"
                 android:layout_marginStart="10dp"/>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <ProgressBar
+        android:id="@+id/uploadFileProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf=""
+        app:layout_constraintTop_toBottomOf="@id/uploadFileCardView"
+        android:indeterminate="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uploading file..."
+        android:id="@+id/uploadProgressText"
+        app:layout_constraintTop_toBottomOf="@id/uploadFileProgress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:id="@+id/uploadFileButton"
+        app:layout_constraintTop_toBottomOf="@id/uploadProgressText"
+        android:layout_marginTop="15dp"
+        android:text="Upload File"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
