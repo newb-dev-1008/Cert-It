@@ -4,11 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -17,6 +19,8 @@ public class UploadSheetActivity extends AppCompatActivity {
 
     private MaterialButton selectFileButton, uploadFileButton;
     private TextView uploadProgress, uploadFileName;
+    private CardView uploadFileCardView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,6 +73,17 @@ public class UploadSheetActivity extends AppCompatActivity {
             case 1:
                 if (resultCode == RESULT_OK) {
                     String path = data.getData().getPath();
+                    String[] s = path.split("/");
+                    String fileName = s[(s.length - 1)];
+                    uploadFileCardView.setVisibility(View.VISIBLE);
+                    uploadProgress.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.VISIBLE);
+                    uploadFileButton.setVisibility(View.VISIBLE);
+                    selectFileButton.setText("Change selected file");
+                    uploadFileName.setText(fileName);
+                }
+            case 2:
+                if (resultCode == RESULT_OK) {
 
                 }
         }

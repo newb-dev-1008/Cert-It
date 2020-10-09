@@ -72,10 +72,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/uploadFileImg"
+                android:layout_toLeftOf="@id/uploadFileDeleteImg"
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
                 android:id="@+id/uploadFileNameTV"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/delete"
+                android:id="@+id/uploadFileDeleteImg"/>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -88,6 +99,7 @@
         android:indeterminate="true"
         android:layout_marginTop="25dp"
         android:layout_marginStart="25dp"
+        android:visibility="gone"
         android:layout_marginEnd="25dp"/>
 
     <TextView
@@ -98,6 +110,7 @@
         app:layout_constraintTop_toBottomOf="@id/uploadFileProgress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
         android:layout_marginTop="10dp"/>
 
     <com.google.android.material.button.MaterialButton
@@ -108,6 +121,7 @@
         android:id="@+id/uploadFileButton"
         app:layout_constraintTop_toBottomOf="@id/uploadProgressText"
         android:layout_marginTop="15dp"
+        android:visibility="gone"
         android:text="Upload File"/>
 
 
