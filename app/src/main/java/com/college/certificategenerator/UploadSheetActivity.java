@@ -2,6 +2,7 @@ package com.college.certificategenerator;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -15,6 +16,8 @@ import androidx.cardview.widget.CardView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.io.File;
+
 public class UploadSheetActivity extends AppCompatActivity {
 
     private MaterialButton selectFileButton, uploadFileButton;
@@ -22,6 +25,7 @@ public class UploadSheetActivity extends AppCompatActivity {
     private CardView uploadFileCardView;
     private ProgressBar progressBar;
     private String path;
+    private int typeFlag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,6 +87,7 @@ public class UploadSheetActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
+                    typeFlag = 1;
                     path = data.getData().getPath();
                     String[] s = path.split("/");
                     String fileName = s[(s.length - 1)];
@@ -95,6 +100,7 @@ public class UploadSheetActivity extends AppCompatActivity {
                 }
             case 2:
                 if (resultCode == RESULT_OK) {
+                    typeFlag = 2;
                     path = data.getData().getPath();
                     String[] s = path.split("/");
                     String fileName = s[(s.length - 1)];
@@ -109,6 +115,13 @@ public class UploadSheetActivity extends AppCompatActivity {
     }
 
     private void showFile() {
+        File file = new File(path);
+        if (file.exists()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri = Uri.fromFile(file);
+            intent.setDataAndType(uri, "")
+        } else {
 
+        }
     }
 }
