@@ -1,5 +1,6 @@
 package com.college.certificategenerator;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -119,9 +121,18 @@ public class UploadSheetActivity extends AppCompatActivity {
         if (file.exists()) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             Uri uri = Uri.fromFile(file);
-            intent.setDataAndType(uri, "")
+            if (typeFlag == 1) {
+                intent.setDataAndType(uri, "text/csv");
+            } else {
+                intent.setDataAndType(uri, "application/vnd.ms-excel");
+            }
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         } else {
-
+            Toast.makeText(this, "The file does not exist. It has probably been deleted/ moved.", Toast.LENGTH_SHORT).show();
         }
     }
 }
