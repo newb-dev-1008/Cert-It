@@ -42,4 +42,18 @@
         android:hint="Enter the participant's full name"
         android:id="@+id/nameET"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/nameET"
+        android:id="@+id/entry_position"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:text="Position/ Achievement:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
