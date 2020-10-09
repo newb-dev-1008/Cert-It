@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class UploadSheetActivity extends AppCompatActivity {
     private TextView uploadProgress, uploadFileName;
     private CardView uploadFileCardView;
     private ProgressBar progressBar;
+    private ImageView deleteIcon;
     private String path;
     private int typeFlag;
 
@@ -43,6 +45,8 @@ public class UploadSheetActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.uploadFileProgress);
         uploadFileCardView = findViewById(R.id.uploadFileCardView);
 
+        deleteIcon = findViewById(R.id.uploadFileDeleteImg);
+
         selectFileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +58,13 @@ public class UploadSheetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showFile();
+            }
+        });
+
+        deleteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
