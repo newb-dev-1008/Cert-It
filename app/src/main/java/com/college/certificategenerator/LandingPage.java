@@ -38,7 +38,7 @@ public class LandingPage extends AppCompatActivity {
     }
 
     private void generateMany() {
-        Intent intent = new Intent(LandingPage.this, UploadSheet.class);
+        Intent intent = new Intent(LandingPage.this, UploadSheetActivity.class);
         startActivity(intent);
     }
 

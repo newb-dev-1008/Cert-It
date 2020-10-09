@@ -19,6 +19,8 @@ import androidx.cardview.widget.CardView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 
@@ -31,6 +33,7 @@ public class UploadSheetActivity extends AppCompatActivity {
     private ImageView deleteIcon;
     private String path;
     private int typeFlag;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class UploadSheetActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.uploadFileProgress);
         uploadFileCardView = findViewById(R.id.uploadFileCardView);
+
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         deleteIcon = findViewById(R.id.uploadFileDeleteImg);
 
