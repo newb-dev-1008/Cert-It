@@ -43,5 +43,7 @@ public class EnterDetails extends AppCompatActivity {
         delete2 = findViewById(R.id.uploadSignDeleteImg2);
         calendar = findViewById(R.id.calendarIcon);
         addAttesterIcon = findViewById(R.id.addIcon);
+
+        selectButton = findViewById(R.id.chooseSignatures);
     }
 }
