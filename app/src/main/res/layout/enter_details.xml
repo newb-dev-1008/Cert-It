@@ -110,6 +110,30 @@
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/calendarIcon"
+        android:id="@+id/entry_dateET"
+        app:layout_constraintStart_toEndOf="@id/calendarIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/calendarIcon"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="20dp"
+        android:text="Click here to select your date."
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/calendar"
+        android:id="@+id/calendarIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/entry_date"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
