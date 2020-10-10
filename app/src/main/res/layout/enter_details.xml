@@ -152,16 +152,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/enterDetailsLinear1"
         android:layout_height="wrap_content"
         android:background="@drawable/rectangle_border"
         app:layout_constraintTop_toBottomOf="@id/authorisersTV"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entry_name_auth1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Name:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_gravity="left" />
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Name"
+            android:id="@+id/authName"/>
 
     </LinearLayout>
 
@@ -170,7 +192,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/addIcon"
         android:src="@drawable/add_darkcircle"
-        app:layout_constraintTop_toBottomOf="@id/authorisersTV"
+        app:layout_constraintTop_toBottomOf="@id/enterDetailsLinear1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
