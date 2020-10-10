@@ -21,12 +21,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/entry_title"
-        android:id="@+id/entry_name"
+        android:id="@+id/entry_name_org"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
-        android:text="Name:"
+        android:text="Name of your organisation:"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0"/>
@@ -34,26 +34,82 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/entry_name"
+        app:layout_constraintTop_toBottomOf="@id/entry_name_org"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:hint="Enter the participant's full name"
+        android:layout_marginTop="10dp"
+        android:hint="Enter the company's full name"
         android:id="@+id/nameET"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nameET"
-        android:id="@+id/entry_position"
+        android:id="@+id/entry_certificate_type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
-        android:text="Position/ Achievement:"
+        android:text="Certificate Type:"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entry_certificate_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        android:hint="Is this a certificate of participation?"
+        android:id="@+id/certificateTypeET"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/certificateTypeET"
+        android:id="@+id/entry_name_participant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:text="Participant Name:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entry_name_participant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textPersonName"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        android:hint="Is this a certificate of participation?"
+        android:id="@+id/participantNameET"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/participantNameET"
+        android:id="@+id/entry_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:text="Date of Issue:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
