@@ -1,16 +1,23 @@
 package com.college.certificategenerator;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class EnterDetails extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
+
+public class EnterDetails extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     // Updates:
     // 1. QR Code Generation for each certificate
@@ -21,6 +28,7 @@ public class EnterDetails extends AppCompatActivity {
     private TextView issueDate, addAttesters;
     private ImageView delete1, delete2, calendar, addAttesterIcon;
     private MaterialButton selectButton;
+    private String namePerson, nameCompany, certType, certText, firstName, secondName, desgOne, desgTwo, date;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,5 +53,32 @@ public class EnterDetails extends AppCompatActivity {
         addAttesterIcon = findViewById(R.id.addIcon);
 
         selectButton = findViewById(R.id.chooseSignatures);
+
+        issueDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                returnDate();
+            }
+        });
+    }
+
+    private void returnDate() {
+        DialogFragment datePicker = new DatePickerFragment();
+        datePicker.show(getSupportFragmentManager(), "date picker");
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(currentDateString);
+    }
+
+    private void generateID() {
+
     }
 }
