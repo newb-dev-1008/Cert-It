@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Upload your file here."
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#000000"
+        android:layout_marginTop="50dp"
+        android:id="@+id/uploadFileTitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uploadFileTitle"
+        android:text="Please upload an Excel Spreadsheet or a CSV file."
+        android:fontFamily="sans-serif-black"
+        android:id="@+id/uploadFileTV"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/uploadSelectFile"
+        android:text="Select your file"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:elevation="8dp"
+        app:cardCornerRadius="8dp"
+        android:id="@+id/uploadFileCardView"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/uploadSelectFile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_marginStart="25dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/attach_file"
+                android:id="@+id/uploadFileImg"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/uploadFileImg"
+                android:layout_toLeftOf="@id/uploadFileDeleteImg"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:id="@+id/uploadFileNameTV"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/delete"
+                android:id="@+id/uploadFileDeleteImg"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/uploadFileProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/uploadFileCardView"
+        android:indeterminate="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="25dp"
+        android:visibility="gone"
+        android:layout_marginEnd="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uploading file..."
+        android:id="@+id/uploadProgressText"
+        app:layout_constraintTop_toBottomOf="@id/uploadFileProgress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:id="@+id/uploadFileButton"
+        app:layout_constraintTop_toBottomOf="@id/uploadProgressText"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:text="Upload File"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
