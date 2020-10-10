@@ -136,6 +136,7 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
 
         Intent intent = new Intent(EnterDetails.this, ChooseTemplates.class);
         intent.putExtra("Details", details);
+        intent.putExtra("flag", 0);
         startActivity(intent);
     }
 

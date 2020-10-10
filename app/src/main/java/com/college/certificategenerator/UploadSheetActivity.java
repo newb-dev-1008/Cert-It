@@ -23,16 +23,18 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.util.HashMap;
 
 public class UploadSheetActivity extends AppCompatActivity {
 
-    private MaterialButton selectFileButton, uploadFileButton;
+    private MaterialButton selectFileButton, selectTemplateButton;
     private TextView uploadProgress, uploadFileName;
     private CardView uploadFileCardView;
     private ProgressBar progressBar;
     private ImageView deleteIcon;
     private String path;
     private int typeFlag;
+    private File file;
     private StorageReference storageReference;
 
     @Override
@@ -40,11 +42,13 @@ public class UploadSheetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upload_sheet);
 
+        // file = new File(null);
+
         uploadProgress = findViewById(R.id.uploadProgressText);
         uploadFileName = findViewById(R.id.uploadFileNameTV);
 
         selectFileButton = findViewById(R.id.uploadSelectFile);
-        uploadFileButton = findViewById(R.id.uploadFileButton);
+        selectTemplateButton = findViewById(R.id.selectTemplateButton1);
 
         progressBar = findViewById(R.id.uploadFileProgress);
         uploadFileCardView = findViewById(R.id.uploadFileCardView);
@@ -71,6 +75,23 @@ public class UploadSheetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deleteSelectedFile();
+            }
+        });
+
+        selectTemplateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Pratyush's Part:
+                // 1. Upload the file selected using the API
+                // 2. Ensure that there's some unique ID linked to the upload, because in the next step
+                //    when template is selected, the template's URL must be passed linking to this CSV file's upload
+
+                Intent intent = new Intent(UploadSheetActivity.this, ChooseTemplates.class);
+                HashMap<String, String> details = new HashMap<>();
+                // intent.putExtra("File", file);
+                intent.putExtra("flag", 1);
+                startActivity(intent);
             }
         });
     }
@@ -106,15 +127,16 @@ public class UploadSheetActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
-            case 1:
+            case 0:
                 if (resultCode == RESULT_OK) {
                     path = data.getData().getPath();
+                    file = new File(path);
                     String[] s = path.split("/");
                     String fileName = s[(s.length - 1)];
                     uploadFileCardView.setVisibility(View.VISIBLE);
-                    uploadProgress.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.VISIBLE);
-                    uploadFileButton.setVisibility(View.VISIBLE);
+                    // uploadProgress.setVisibility(View.VISIBLE);
+                    // progressBar.setVisibility(View.VISIBLE);
+                    selectTemplateButton.setVisibility(View.VISIBLE);
                     selectFileButton.setText("Change selected file");
                     uploadFileName.setText(fileName);
                 }
@@ -123,14 +145,16 @@ public class UploadSheetActivity extends AppCompatActivity {
     }
 
     private void showFile() {
-        File file = new File(path);
+        file = new File(path);
         if (file.exists()) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             Uri uri = Uri.fromFile(file);
             if (typeFlag == 1) {
                 intent.setDataAndType(uri, "text/csv");
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             } else {
                 intent.setDataAndType(uri, "application/vnd.ms-excel");
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             }
             try {
                 startActivity(intent);
@@ -150,10 +174,10 @@ public class UploadSheetActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         uploadFileCardView.setVisibility(View.GONE);
-                        uploadFileButton.setVisibility(View.GONE);
+                        selectTemplateButton.setVisibility(View.GONE);
                         selectFileButton.setText("Select your file");
                         String s1 = "File removed.";
-                        Toast.makeText(UploadSheetActivity.this, "File removed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UploadSheetActivity.this, s1, Toast.LENGTH_SHORT).show();
                     }
                 }).setNegativeButton("No", null)
                 .create();

@@ -60,8 +60,7 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.Temp
 
             }
         });
-        // holder.mTextView1.setText(currentItem.getText1());
-        // holder.mTextView2.setText(currentItem.getText2());
+
     }
     @Override
     public int getItemCount() {

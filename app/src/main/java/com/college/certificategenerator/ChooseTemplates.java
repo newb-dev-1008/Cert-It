@@ -26,6 +26,7 @@ public class ChooseTemplates extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private int flag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +34,11 @@ public class ChooseTemplates extends AppCompatActivity {
         setContentView(R.layout.choose_templates);
 
         details = new HashMap<>();
-        details = (HashMap<String, String>) getIntent().getExtras().get("Details");
+        flag = Integer.parseInt(getIntent().getExtras().get("flag").toString());
+
+        if (flag == 0) {
+            details = (HashMap<String, String>) getIntent().getExtras().get("Details");
+        }
 
         templates = new ArrayList<>();
 
