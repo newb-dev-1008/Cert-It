@@ -104,6 +104,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/participantNameET"
+        android:id="@+id/entry_name_certificateTextTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:text="Miscellaneous text on certificate:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entry_name_certificateTextTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textPersonName"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        android:hint="Your remarks"
+        android:id="@+id/entry_name_certificateTextET"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entry_name_certificateTextET"
         android:id="@+id/entry_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

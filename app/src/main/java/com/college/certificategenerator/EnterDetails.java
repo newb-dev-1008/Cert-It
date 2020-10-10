@@ -5,12 +5,16 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class EnterDetails extends AppCompatActivity {
 
     // Updates:
     // 1. QR Code Generation for each certificate
     // 2. Adding options for including logos
     // 3. Checking if the logos have background; if they do, auto removal of background
+
+    private TextInputEditText nameOrg, certificateType, nameParticipant
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
