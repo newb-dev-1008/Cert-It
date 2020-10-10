@@ -110,6 +110,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
         android:text="Miscellaneous text on certificate:"
+        android:visibility="gone"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0"/>
@@ -122,6 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:inputType="textPersonName"
         android:layout_marginStart="25dp"
+        android:visibility="gone"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="10dp"
         android:hint="Your remarks"
@@ -335,6 +337,7 @@
         android:text="Upload both signatures"
         android:id="@+id/chooseSignatures"
         app:layout_constraintTop_toBottomOf="@id/uploadSignTV"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="25dp"
@@ -345,6 +348,7 @@
         android:layout_width="match_parent"
         android:elevation="8dp"
         app:cardCornerRadius="8dp"
+        android:visibility="gone"
         android:id="@+id/uploadSignCardView1"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/chooseSignatures"
@@ -394,6 +398,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:elevation="8dp"
+        android:visibility="gone"
         app:cardCornerRadius="8dp"
         android:id="@+id/uploadSignCardView2"
         android:layout_height="wrap_content"
@@ -456,31 +461,24 @@
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"/>
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/templatesScrollView"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
         app:layout_constraintTop_toBottomOf="@id/templateOptionsTV"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:id="@+id/templateOptions">
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:id="@+id/selectedImage"/>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Certificate"
-        android:id="@+id/enterInputs"
-        app:layout_constraintTop_toBottomOf="@id/templatesScrollView"
+        android:text="Step 2: Choose Template"
+        android:id="@+id/chooseTemplate"
+        app:layout_constraintTop_toBottomOf="@id/selectedImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="25dp"

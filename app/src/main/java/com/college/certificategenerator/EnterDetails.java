@@ -25,7 +25,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class EnterDetails extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -38,15 +40,20 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
     private TextInputEditText nameOrg, certificateType, nameParticipant, certificateText, name1, name2, desg1, desg2;
     private TextView issueDate, addAttesters, fileName1, fileName2;
     private ImageView delete1, delete2, calendar, addAttesterIcon;
-    private MaterialButton selectButton;
+    private MaterialButton selectButton, chooseTemplate;
     private LinearLayout linear1, linear2;
     private String namePerson, nameCompany, certType, certText, firstName, secondName, desgOne, desgTwo, date;
     private ArrayList<Bitmap> signPictures;
+    private int fileNo;
+    private HashMap<String, String> details;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enter_details);
+
+        fileNo = 1;
+        details = new HashMap<>();
 
         nameOrg = findViewById(R.id.nameET);
         certificateType = findViewById(R.id.certificateTypeET);
@@ -71,6 +78,7 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
         addAttesterIcon = findViewById(R.id.addIcon);
 
         selectButton = findViewById(R.id.chooseSignatures);
+        chooseTemplate = findViewById(R.id.chooseTemplate);
 
         issueDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +107,36 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
                 addAttesters();
             }
         });
+
+        chooseTemplate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseTemplate();
+            }
+        });
+    }
+
+    private void chooseTemplate() {
+        namePerson = nameParticipant.getText().toString();
+        nameCompany = nameOrg.getText().toString();
+        certType = certificateType.getText().toString();
+        // certText = certificateText.getText().toString();
+        firstName = name1.getText().toString();
+        secondName = name2.getText().toString();
+        desgOne = desg1.getText().toString();
+        desgTwo = desg2.getText().toString();
+        details.put("Name", namePerson);
+        details.put("Company_Name", nameCompany);
+        details.put("Certificate", certType);
+        details.put("Certifier1", firstName);
+        details.put("Certifier_Position1", desgOne);
+        details.put("Certifier2", secondName);
+        details.put("Certifier_Position2", desgTwo);
+        details.put("Date", date);
+
+        Intent intent = new Intent(EnterDetails.this, ChooseTemplates.class);
+        intent.putExtra("Details", details);
+        startActivity(intent);
     }
 
     private void addAttesters() {
@@ -136,7 +174,12 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
                                 Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
                                 signPictures.add(bitmap);
                                 // populateRecyclerView(bitmap, picturePath);
-
+                                if (fileNo == 1) {
+                                    fileName1.setText(picturePath);
+                                    fileNo++;
+                                } else if (fileNo == 2) {
+                                    fileName2.setText(picturePath);
+                                }
                                 cursor.close();
 
                             }
