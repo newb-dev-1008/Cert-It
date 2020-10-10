@@ -6,6 +6,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,7 +22,10 @@ public class ChooseTemplates extends AppCompatActivity {
 
     private HashMap<String, String> details;
     private StorageReference storageReference;
-    ArrayList<StorageReference> templates;
+    private ArrayList<StorageReference> templates;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +43,13 @@ public class ChooseTemplates extends AppCompatActivity {
             @Override
             public void onSuccess(ListResult listResult) {
                 templates.addAll(listResult.getPrefixes());
+
+                mRecyclerView = findViewById(R.id.templatesRecyclerView);
+                mRecyclerView.setHasFixedSize(true);
+                mLayoutManager = new LinearLayoutManager(ChooseTemplates.this);
+                mAdapter = new TemplatesAdapter(templates);
+                mRecyclerView.setLayoutManager(mLayoutManager);
+                mRecyclerView.setAdapter(mAdapter);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
