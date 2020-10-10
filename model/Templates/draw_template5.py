@@ -7,14 +7,16 @@ import os
 from os.path import basename
 
 from datetime import datetime
+import random
+import string
 
-df = pd.read_csv('data_1.csv')
+df = pd.read_csv('data.csv')
+
+new_columns = ['Name', 'Company_Name', 'Certificate','Certifier1' , 'Certifier_Position1',
+	    	'Certifier2', 'Certifier_Position2', 'Date']
+
+df.columns = new_columns
 df = df.applymap(str)
-
-im = Image.open("Template7_TBD.png")
-
-d = ImageDraw.Draw(im)
-
 
 
 def paste(cordinates ,text_color, font , font_size ,string):
@@ -45,7 +47,7 @@ def paste_bold(cordinates ,text_color, font , font_size ,string):
 def center_align(name):
 
 	f_font = ImageFont.truetype(oswald,110)
-	bounding_box = [580,540 , 1500 , 790]
+	bounding_box = [180,540 , 1100 , 790]
 	x1, y1, x2, y2 = bounding_box  
 
 	w, h = d.textsize(name, font=f_font)
@@ -53,9 +55,9 @@ def center_align(name):
 	x = (x2 - x1 - w)/2 + x1
 	y = (y2 - y1 - h)/2 + y1
 
-	d.text((x, y), name,      fill =(0,0,139), align='center', font=f_font)
-	d.text((x+2, y+2),name ,  fill =(0,0,139), align='center', font=f_font)
-	d.text((x-2, y-2), name,  fill =(0,0,139), align='center', font=f_font)
+	d.text((x, y), name,  fill =(102,205,170),align='center', font=f_font)
+	d.text((x+2, y+2),name ,  fill =(102,205,170),align='center', font=f_font)
+	d.text((x-2, y-2), name,  fill =(102,205,170),align='center', font=f_font)
 
 
 def create_data(df):
@@ -97,7 +99,25 @@ def convert_date(string):
 
 	return string
 
+def unique_id(list1):
 
+	x = '#' + ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+
+	if len(list1) == 0:
+
+		return str(x)
+
+	if len(list1) != 0:
+
+		if x in list1:
+
+			y = '#' + ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+
+			return str(y)
+
+		else:
+
+			return str(x)
 
 
 georgia = 'georgia.ttf'
@@ -106,16 +126,33 @@ oswald = r'C:\Users\ROSHAN\Certificate Maker\Fonts\Oswald-Bold.ttf'
 oswald_light = r'C:\Users\ROSHAN\Certificate Maker\Fonts\Oswald-Light.ttf'
 
 rows_list = [] 
+unique_id_list = []
 
 create_data(df)
 
+length = len(df)
+
+for i in range(0,length):
+
+	unique_id1 = unique_id(unique_id_list)
+
+	unique_id_list.append(unique_id1)
+
+for val in range(0,len(rows_list)):
+
+   rows_list[val].insert(8,unique_id_list[val])
+
 for rows in rows_list:
-	
-	paste_bold((810,200) , 	(218,165,32), oswald_light, 90 ,rows[1])	
 
-	paste_bold((500,320) , 	(218,165,32), oswald_light, 110 ,rows[2])
+	im = Image.open("Template5_TBD.png")
 
-	paste((810,480) , (0,0,128), oswald_light, 80 , 'is presented to')
+	d = ImageDraw.Draw(im)
+
+	paste_bold((410,200) , 	(220,20,60), oswald_light, 90 ,rows[1])	
+
+	paste_bold((100,320) , (0,0,128), oswald_light, 110 ,rows[2])
+
+	paste((410,480) , (0,0,128), oswald_light, 80 , 'is presented to')
 
 	if len(rows[0]) > 15:
 
@@ -125,17 +162,17 @@ for rows in rows_list:
 	else:
 		center_align(rows[0])
 
-	paste((810,770) , (218,165,32),oswald_light, 50 , 'On '  + convert_date(rows[-1]))
+	paste((410,770) , (70,130,180),oswald_light, 50 , 'On '  + convert_date(rows[7]))
 
-	paste((510,850) , 	(0,0,128),oswald_light , 60 , 'For potraying examplary skills and completing')
-	paste((510,915) , 	(0,0,128),oswald_light , 60 , 'all assigned tasks')
+	paste((110,850) , 	(0,0,128),oswald_light , 60 , 'For potraying examplary skills and completing')
+	paste((110,915) , 	(0,0,128),oswald_light , 60 , 'all assigned tasks')
 
-	paste_bold((480, 1075) , (218,165,32), georgia ,60 , rows[3])
-	paste((530, 1175), (0,0,128) , oswald_light , 40 , rows[4])
+	paste_bold((180, 1025) , (102,205,170), georgia ,40 , rows[3])
+	paste((180 , 1065), (0,0,128) , oswald_light , 30 , rows[4])
 
-	paste_bold((1200,1075), (218,165,32) ,georgia , 60 , rows[5])
-	paste((1200 , 1175), (0,0,128) , oswald_light , 40 , rows[6])
+	paste_bold((1000,1025), (102,205,170) ,georgia , 40 , rows[5])
+	paste((1000 , 1065), (0,0,128) , oswald_light , 30 , rows[6])
 
-	d.line([(500, 460), (1460,460)] , fill ="darkblue", width = 7) 
+	paste((410 , 1150), (0,0,128) , oswald_light , 35 , rows[8])
 
 	im.save('Certificate_' + rows[0] + '.png')
