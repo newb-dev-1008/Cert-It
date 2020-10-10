@@ -83,6 +83,7 @@ public class UploadSheetActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                        typeFlag = 1;
                         intent.setType("text/csv");
                         startActivityForResult(intent, 1);
                     }
@@ -90,6 +91,7 @@ public class UploadSheetActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                        typeFlag = 2;
                         intent.setType("application/vnd.ms-excel");
                         startActivityForResult(intent, 2);
                     }
@@ -106,7 +108,6 @@ public class UploadSheetActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
-                    typeFlag = 1;
                     path = data.getData().getPath();
                     String[] s = path.split("/");
                     String fileName = s[(s.length - 1)];
@@ -117,19 +118,7 @@ public class UploadSheetActivity extends AppCompatActivity {
                     selectFileButton.setText("Change selected file");
                     uploadFileName.setText(fileName);
                 }
-            case 2:
-                if (resultCode == RESULT_OK) {
-                    typeFlag = 2;
-                    path = data.getData().getPath();
-                    String[] s = path.split("/");
-                    String fileName = s[(s.length - 1)];
-                    uploadFileCardView.setVisibility(View.VISIBLE);
-                    uploadProgress.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.VISIBLE);
-                    uploadFileButton.setVisibility(View.VISIBLE);
-                    selectFileButton.setText("Change selected file");
-                    uploadFileName.setText(fileName);
-                }
+                break;
         }
     }
 

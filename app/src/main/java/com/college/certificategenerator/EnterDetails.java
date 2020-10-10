@@ -1,7 +1,13 @@
 package com.college.certificategenerator;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -17,6 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
@@ -29,11 +36,12 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
     // 3. Checking if the logos have background; if they do, auto removal of background
 
     private TextInputEditText nameOrg, certificateType, nameParticipant, certificateText, name1, name2, desg1, desg2;
-    private TextView issueDate, addAttesters;
+    private TextView issueDate, addAttesters, fileName1, fileName2;
     private ImageView delete1, delete2, calendar, addAttesterIcon;
     private MaterialButton selectButton;
     private LinearLayout linear1, linear2;
     private String namePerson, nameCompany, certType, certText, firstName, secondName, desgOne, desgTwo, date;
+    private ArrayList<Bitmap> signPictures;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +59,11 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
 
         issueDate = findViewById(R.id.entry_dateET);
         addAttesters = findViewById(R.id.uploadSignTV);
+        fileName1 = findViewById(R.id.uploadSignNameTV);
+        fileName2 = findViewById(R.id.uploadSignNameTV2);
+
+        linear1 = findViewById(R.id.enterDetailsLinear1);
+        linear2 = findViewById(R.id.enterDetailsLinear2);
 
         delete1 = findViewById(R.id.uploadSignDeleteImg);
         delete2 = findViewById(R.id.uploadSignDeleteImg2);
@@ -93,6 +106,45 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
         linear2.setVisibility(View.VISIBLE);
         addAttesters.setVisibility(View.GONE);
         addAttesterIcon.setVisibility(View.GONE);
+
+        selectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 0);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode != RESULT_CANCELED) {
+            switch (requestCode) {
+                case 1:
+                    if (requestCode == RESULT_OK && data != null) {
+                        Uri selectedImage = data.getData();
+                        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                        if (selectedImage != null) {
+                            Cursor cursor = getApplicationContext().getContentResolver().query(selectedImage,
+                                    filePathColumn, null, null, null);
+                            if (cursor != null) {
+                                cursor.moveToFirst();
+                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                                String picturePath = cursor.getString(columnIndex);
+                                Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
+                                signPictures.add(bitmap);
+                                // populateRecyclerView(bitmap, picturePath);
+
+                                cursor.close();
+
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
     }
 
     private void returnDate() {
