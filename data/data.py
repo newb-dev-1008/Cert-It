@@ -11,7 +11,7 @@ def main(n):
     writer.writerow(["Name" , "Company Name" , "Certificate", "Certifier1" ,"CertifierPosition1", "Certifier2" , "CertifierPosition2", "Date"])
     for i in range(len(names)):
       name = names[i].replace("_", " ")
-      writer.writerow([name, "GlobalCert", "Participation", "Ahmed Mawia", "Chief Technical Officer", "Rohan Mathur", "Chief Executive Officer", "10/10/2020"])
+      writer.writerow([name, "GlobalCert", "Certificate Of Completion", "Ahmed Mawia", "Chief Technical Officer", "Rohan Mathur", "Chief Executive Officer", "10/10/2020"])
 
   wb = Workbook()
   ws = wb.active
