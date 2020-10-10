@@ -4,7 +4,6 @@ import pandas as pd
 
 import zipfile
 import os
-from os.path import basename
 
 from datetime import datetime
 import random
@@ -146,7 +145,15 @@ for val in range(0,len(rows_list)):
 
 for rows in rows_list:
 
-	im = Image.open(r"C:\Users\ROSHAN\Certificate Maker\Created_Images\imaged-with-blue-border.png")
+	path = r'C:\Users\ROSHAN\Certificate Maker\Images\sample'  #Your directory
+
+	filelist= [file for file in os.listdir(path) if file.endswith('.png') or file.endswith('jpg') or file.endswith('jpeg')]
+	
+	for images in filelist:  #Ensure the directory has only that one image
+
+			im = Image.open(images)	
+
+	#im = Image.open(r"C:\Users\ROSHAN\Certificate Maker\Created_Images\imaged-with-blue-border.png")
 
 	newsize = (2000,1414)
 	im1 = im.resize(newsize) 

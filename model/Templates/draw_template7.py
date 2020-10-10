@@ -4,7 +4,7 @@ import pandas as pd
 
 import zipfile
 import os
-from os.path import basename
+
 
 from datetime import datetime
 import random
@@ -150,6 +150,16 @@ for val in range(0,len(rows_list)):
 
 
 for rows in rows_list:
+
+	path = r'C:\Users\ROSHAN\Certificate Maker\Images'  #Your directory
+
+	filelist= [file for file in os.listdir(path) if file.endswith('.png') or file.endswith('jpg') or file.endswith('jpeg')]
+	
+	for images in filelist:
+
+			im = Image.open(images) #Ensure only your one image is in the directory	
+
+	#im = Image.open('Template7_TBD.png')
 	
 	paste_bold((810,200) , 	(218,165,32), oswald_light, 90 ,rows[1])	
 
