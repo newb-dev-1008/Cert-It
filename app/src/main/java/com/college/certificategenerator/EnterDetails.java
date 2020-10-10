@@ -19,7 +19,7 @@ public class EnterDetails extends AppCompatActivity {
 
     private TextInputEditText nameOrg, certificateType, nameParticipant, certificateText, name1, name2, desg1, desg2;
     private TextView issueDate, addAttesters;
-    private ImageView delete1, delete2, calendar, addAttestorIcon;
+    private ImageView delete1, delete2, calendar, addAttesterIcon;
     private MaterialButton selectButton;
 
     @Override
@@ -34,7 +34,14 @@ public class EnterDetails extends AppCompatActivity {
         name2 = findViewById(R.id.authName2);
         desg1 = findViewById(R.id.authDesg1);
         desg2 = findViewById(R.id.authDesg2);
+        certificateText = findViewById(R.id.entry_name_certificateTextET);
 
+        issueDate = findViewById(R.id.entry_dateET);
+        addAttesters = findViewById(R.id.uploadSignTV);
 
+        delete1 = findViewById(R.id.uploadSignDeleteImg);
+        delete2 = findViewById(R.id.uploadSignDeleteImg2);
+        calendar = findViewById(R.id.calendarIcon);
+        addAttesterIcon = findViewById(R.id.addIcon);
     }
 }
