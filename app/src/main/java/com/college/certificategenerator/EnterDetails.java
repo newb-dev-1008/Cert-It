@@ -15,7 +15,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.Random;
 
 public class EnterDetails extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -73,12 +76,22 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(currentDateString);
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        // String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        String currentDateString = format.format(c.getTime());
+
+        issueDate.setText(currentDateString);
     }
 
-    private void generateID() {
+    private String generateProjectID() {
+        StringBuilder sb = new StringBuilder(7);
+        String DATA = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        Random RANDOM = new Random();
+        for (int i = 0; i < 7; i++) {
+            sb.append(DATA.charAt(RANDOM.nextInt(DATA.length())));
+        }
 
+        return sb.toString();
     }
 }
