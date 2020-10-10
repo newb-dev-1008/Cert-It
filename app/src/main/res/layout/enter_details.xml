@@ -208,6 +208,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:hint="Enter Designation"
             android:id="@+id/authDesg1"/>
 
@@ -266,6 +267,7 @@
             android:textSize="15sp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:hint="Enter Designation"
             android:id="@+id/authDesg2"/>
@@ -419,13 +421,29 @@
         app:layout_constraintTop_toBottomOf="@id/uploadSignCardView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/templateOptionsTV"
         app:layout_constraintHorizontal_bias="0"
+        android:textColor="#000000"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/templateOptionsTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/templateOptions">
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
