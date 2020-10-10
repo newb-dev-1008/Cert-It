@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
     private TextView issueDate, addAttesters;
     private ImageView delete1, delete2, calendar, addAttesterIcon;
     private MaterialButton selectButton;
+    private LinearLayout linear1, linear2;
     private String namePerson, nameCompany, certType, certText, firstName, secondName, desgOne, desgTwo, date;
 
     @Override
@@ -63,6 +65,34 @@ public class EnterDetails extends AppCompatActivity implements DatePickerDialog.
                 returnDate();
             }
         });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                returnDate();
+            }
+        });
+
+        addAttesters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addAttesters();
+            }
+        });
+
+        addAttesterIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addAttesters();
+            }
+        });
+    }
+
+    private void addAttesters() {
+        linear1.setVisibility(View.VISIBLE);
+        linear2.setVisibility(View.VISIBLE);
+        addAttesters.setVisibility(View.GONE);
+        addAttesterIcon.setVisibility(View.GONE);
     }
 
     private void returnDate() {
