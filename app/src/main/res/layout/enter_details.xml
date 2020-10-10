@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Mathur chutiya hai -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,6 +149,21 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_border"
+        app:layout_constraintTop_toBottomOf="@id/authorisersTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"
