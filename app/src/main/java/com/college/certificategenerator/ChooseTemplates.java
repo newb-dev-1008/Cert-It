@@ -33,13 +33,11 @@ public class ChooseTemplates extends AppCompatActivity {
         templates = new ArrayList<>();
 
         storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference dummyRef = storageReference.child("starter-templates");
+        StorageReference dummyRef = storageReference.child("starter-templates/");
         dummyRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
             @Override
             public void onSuccess(ListResult listResult) {
-                for (StorageReference template : listResult.getPrefixes()) {
-                    templates.add(template);
-                }
+                templates.addAll(listResult.getPrefixes());
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
