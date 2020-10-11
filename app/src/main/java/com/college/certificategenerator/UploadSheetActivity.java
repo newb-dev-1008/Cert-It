@@ -106,7 +106,7 @@ public class UploadSheetActivity extends AppCompatActivity {
                         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                         typeFlag = 1;
                         intent.setType("text/csv");
-                        startActivityForResult(intent, 1);
+                        startActivityForResult(intent, 0);
                     }
                 }).setNegativeButton("Excel Files", new DialogInterface.OnClickListener() {
                     @Override
@@ -114,7 +114,7 @@ public class UploadSheetActivity extends AppCompatActivity {
                         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                         typeFlag = 2;
                         intent.setType("application/vnd.ms-excel");
-                        startActivityForResult(intent, 2);
+                        startActivityForResult(intent, 0);
                     }
                 }).create();
 

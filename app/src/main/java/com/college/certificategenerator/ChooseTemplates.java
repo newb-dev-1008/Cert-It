@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
@@ -43,10 +44,18 @@ public class ChooseTemplates extends AppCompatActivity {
         templates = new ArrayList<>();
 
         storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference dummyRef = storageReference.child("starter-templates/");
+        StorageReference dummyRef = storageReference.child("starter-templates");
         dummyRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
             @Override
             public void onSuccess(ListResult listResult) {
+                new MaterialAlertDialogBuilder(ChooseTemplates.this)
+                        .setTitle("Test")
+                        .setMessage(listResult.toString())
+                        .create().show();
+
+
+
+                /*
                 templates.addAll(listResult.getPrefixes());
 
                 mRecyclerView = findViewById(R.id.templatesRecyclerView);
@@ -55,6 +64,8 @@ public class ChooseTemplates extends AppCompatActivity {
                 mAdapter = new TemplatesAdapter(templates);
                 mRecyclerView.setLayoutManager(mLayoutManager);
                 mRecyclerView.setAdapter(mAdapter);
+
+                 */
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

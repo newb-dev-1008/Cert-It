@@ -1,6 +1,7 @@
 package com.college.certificategenerator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,6 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesAdapter.Temp
                 // 1. "details" HashMap needs to be obtained from ChooseTemplates.java
                 // 2. Use "currentItem" to find the URL of the item and append the URL in String format to "details"
                 // 3. Send "details" via your backend.
-
             }
         });
 

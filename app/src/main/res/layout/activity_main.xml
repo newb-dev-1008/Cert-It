@@ -16,10 +16,13 @@
 
         <ImageView
             android:id="@+id/ivCertificate"
-            android:layout_width="414dp"
-            android:layout_height="326dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/certificateone" />
+            android:src="@drawable/certificate2"/>
 
         <include
             android:id="@+id/custom_alert"

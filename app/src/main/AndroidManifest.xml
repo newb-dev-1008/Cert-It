@@ -22,6 +22,7 @@
         <activity android:name=".ScanPhotosActivity"/>
         <activity android:name=".CapturePhotoActivity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".ChooseTemps"/>
 
     </application>
 

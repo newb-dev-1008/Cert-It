@@ -13,6 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
         android:layout_marginTop="40dp"
         android:id="@+id/scanTitleTV"
         android:layout_marginStart="25dp"
