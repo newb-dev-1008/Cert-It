@@ -79,7 +79,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
 
     private boolean allPermissionsGranted(){
         for(String permission : REQUIRED_PERMISSIONS){
-            if(ContextCompat.checkSelfPermission(CaptureImageActivity.this, permission) != PackageManager.PERMISSION_GRANTED){
+            if(ContextCompat.checkSelfPermission(CapturePhotoActivity.this, permission) != PackageManager.PERMISSION_GRANTED){
                 return false;
             }
         }
@@ -98,8 +98,8 @@ public class CapturePhotoActivity extends AppCompatActivity {
                 } catch (ExecutionException | InterruptedException e) {
                     // No errors need to be handled for this Future.
                     // This should never be reached.
-                    Toast.makeText(CaptureImageActivity.this, "Can't find a camera for preview.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CaptureImageActivity.this, StudentUserProfile.class);
+                    Toast.makeText(CapturePhotoActivity.this, "Can't find a camera for preview.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CapturePhotoActivity.this, ScanPhotosActivity.class);
                     finish();
                     startActivity(intent);
                 }
@@ -158,7 +158,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
                 flash_on.setVisibility(View.VISIBLE);
 
                 imageCapture.setFlashMode(ImageCapture.FLASH_MODE_ON);
-                Toast.makeText(CaptureImageActivity.this, "Flash: ON", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CapturePhotoActivity.this, "Flash: ON", Toast.LENGTH_SHORT).show();
                 // setFlash(1);
             }
         });
@@ -170,7 +170,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
                 flash_auto.setVisibility(View.VISIBLE);
 
                 imageCapture.setFlashMode(ImageCapture.FLASH_MODE_AUTO);
-                Toast.makeText(CaptureImageActivity.this, "Flash: AUTO", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CapturePhotoActivity.this, "Flash: AUTO", Toast.LENGTH_SHORT).show();
                 // setFlash(0);
             }
         });
@@ -182,7 +182,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
                 flash_off.setVisibility(View.VISIBLE);
 
                 imageCapture.setFlashMode(ImageCapture.FLASH_MODE_OFF);
-                Toast.makeText(CaptureImageActivity.this, "Flash: OFF", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CapturePhotoActivity.this, "Flash: OFF", Toast.LENGTH_SHORT).show();
                 // setFlash(2);
             }
         });
@@ -192,7 +192,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imageCapture.takePicture(executor, new ImageCapture.OnImageCapturedCallback() {
                     @Override
-                    public void onCaptureSuccess(@NonNull ImageProxy image) {
+                    public void onCaptureSuccess(@NonNull final ImageProxy image) {
                         // super.onCaptureSuccess(image);
                         runOnUiThread(new Runnable() {
                             @Override
@@ -235,7 +235,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(@NonNull ImageCaptureException exception) {
-                        AlertDialog captureFailed = new MaterialAlertDialogBuilder(CaptureImageActivity.this)
+                        AlertDialog captureFailed = new MaterialAlertDialogBuilder(CapturePhotoActivity.this)
                                 .setTitle("Unable to capture photos")
                                 .setMessage("There seems to be a problem with capturing the photo:\n" + exception.getMessage())
                                 .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
@@ -247,7 +247,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
                                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent intent = new Intent(CaptureImageActivity.this, StudentUserProfile.class);
+                                        Intent intent = new Intent(CapturePhotoActivity.this, ScanPhotosActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
@@ -264,17 +264,22 @@ public class CapturePhotoActivity extends AppCompatActivity {
         });
     }
 
-    private void verifyID(InputImage IDImage, ImageProxy proxyImage){
+    private void test_text(Text textTask){
+        String textResult = textTask.getText();
+        Intent intent = new Intent(CapturePhotoActivity.this, ShowScannedText.class);
+        intent.putExtra("test_text", textResult);
+        startActivity(intent);
+    }
+
+    private void verifyID(InputImage IDImage, final ImageProxy proxyImage){
         TextRecognizer recognizer = TextRecognition.getClient();
 
         Task<Text> result = recognizer.process(IDImage).addOnSuccessListener(new OnSuccessListener<Text>() {
             @Override
             public void onSuccess(Text text) {
-                AlertDialog textRegistered = new MaterialAlertDialogBuilder(CaptureImageActivity.this)
-                        .setTitle("ID Registered")
-                        .setMessage("We have extracted the necessary information for verification from the provided ID card. " +
-                                "Your details shall be verified and, if found valid, shall be updated shortly." +
-                                "In case of data inconsistency, mismatch or an invalid ID, we will immediately notify you via e-mail.")
+                AlertDialog textRegistered = new MaterialAlertDialogBuilder(CapturePhotoActivity.this)
+                        .setTitle("Photo captured.")
+                        .setMessage("We will be extracting text out of your image and returning with the generated certificates.")
                         .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -296,8 +301,8 @@ public class CapturePhotoActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                AlertDialog textRegisteredFailed = new MaterialAlertDialogBuilder(CaptureImageActivity.this)
-                        .setTitle("Failed to register your ID")
+                AlertDialog textRegisteredFailed = new MaterialAlertDialogBuilder(CapturePhotoActivity.this)
+                        .setTitle("Failed to convert your image to CSV")
                         .setMessage(e.getMessage() + "\nYour image seems to be out of focus and not clear enough. Please retry with a clearer picture.")
                         .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
                             @Override
@@ -313,12 +318,12 @@ public class CapturePhotoActivity extends AppCompatActivity {
                                 startCamera();
                             }
                         })
-                        .setNegativeButton("Cancel Verification", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 proxyImage.close();
-                                Toast.makeText(CaptureImageActivity.this, "Cancelled Verification.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(CaptureImageActivity.this, StudentUserProfile.class);
+                                Toast.makeText(CapturePhotoActivity.this, "Cancelled Scanning.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CapturePhotoActivity.this, ScanPhotosActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
