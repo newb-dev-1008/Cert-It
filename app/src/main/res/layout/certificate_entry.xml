@@ -43,5 +43,16 @@
         android:text="Generate from a spreadsheet"
         android:layout_marginTop="20dp"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/generateFromCSV"
+        android:id="@+id/scanCSV"
+        android:text="Scan a spreadsheet"
+        android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

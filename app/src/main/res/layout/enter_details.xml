@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <!-- Mathur chutiya hai -->
 
     <TextView
         android:layout_width="wrap_content"
@@ -102,6 +104,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/participantNameET"
+        android:id="@+id/entry_name_certificateTextTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:text="Miscellaneous text on certificate:"
+        android:visibility="gone"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entry_name_certificateTextTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textPersonName"
+        android:layout_marginStart="25dp"
+        android:visibility="gone"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        android:hint="Your remarks"
+        android:id="@+id/entry_name_certificateTextET"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entry_name_certificateTextET"
         android:id="@+id/entry_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,23 +183,144 @@
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/enterDetailsLinear1"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_border"
+        app:layout_constraintTop_toBottomOf="@id/authorisersTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entry_name_auth1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Name:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_gravity="left" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Name"
+            android:id="@+id/authName"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entry_desig_auth1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Designation:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_gravity="left" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Enter Designation"
+            android:id="@+id/authDesg1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/enterDetailsLinear2"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_border"
+        app:layout_constraintTop_toBottomOf="@id/enterDetailsLinear1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entry_name_auth2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Name:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_gravity="left" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Name"
+            android:id="@+id/authName2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entry_desig_auth2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Designation:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_gravity="left" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Designation"
+            android:id="@+id/authDesg2"/>
+
+    </LinearLayout>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addIcon"
         android:src="@drawable/add_darkcircle"
-        app:layout_constraintTop_toBottomOf="@id/authorisersTV"
+        app:layout_constraintTop_toBottomOf="@id/enterDetailsLinear2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.10"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add an attester"
+        android:text="Add attesters (Two Mandatory)"
+        android:id="@+id/uploadSignTV"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/authorisersTV"
         app:layout_constraintStart_toEndOf="@id/addIcon"
@@ -179,4 +331,159 @@
         android:layout_marginEnd="25dp"
         app:layout_constraintHorizontal_bias="0"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload both signatures"
+        android:id="@+id/chooseSignatures"
+        app:layout_constraintTop_toBottomOf="@id/uploadSignTV"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:elevation="8dp"
+        app:cardCornerRadius="8dp"
+        android:visibility="gone"
+        android:id="@+id/uploadSignCardView1"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/chooseSignatures"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_marginStart="25dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/attach_file"
+                android:id="@+id/uploadSignImg"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/uploadSignImg"
+                android:layout_toLeftOf="@id/uploadSignDeleteImg"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:id="@+id/uploadSignNameTV"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/delete"
+                android:id="@+id/uploadSignDeleteImg"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:elevation="8dp"
+        android:visibility="gone"
+        app:cardCornerRadius="8dp"
+        android:id="@+id/uploadSignCardView2"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/uploadSignCardView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_marginStart="25dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/attach_file"
+                android:id="@+id/uploadSignImg2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/uploadSignImg2"
+                android:layout_toLeftOf="@id/uploadSignDeleteImg2"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:id="@+id/uploadSignNameTV2"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/delete"
+                android:id="@+id/uploadSignDeleteImg2"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose your template"
+        app:layout_constraintTop_toBottomOf="@id/uploadSignCardView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/templateOptionsTV"
+        app:layout_constraintHorizontal_bias="0"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:layout_constraintTop_toBottomOf="@id/templateOptionsTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:id="@+id/selectedImage"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Step 2: Choose Template"
+        android:id="@+id/chooseTemplate"
+        app:layout_constraintTop_toBottomOf="@id/selectedImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -46,6 +46,7 @@
         android:elevation="8dp"
         app:cardCornerRadius="8dp"
         android:id="@+id/uploadFileCardView"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/uploadSelectFile"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +96,7 @@
         android:id="@+id/uploadFileProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/uploadFileCardView"
         android:indeterminate="true"
         android:layout_marginTop="25dp"
@@ -104,6 +106,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Uploading file..."
         android:id="@+id/uploadProgressText"
         app:layout_constraintTop_toBottomOf="@id/uploadFileProgress"
@@ -116,10 +119,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:id="@+id/uploadFileButton"
+        android:visibility="gone"
+        android:id="@+id/selectTemplateButton1"
         app:layout_constraintTop_toBottomOf="@id/uploadProgressText"
         android:layout_marginTop="15dp"
-        android:text="Upload File"/>
+        android:text="Step 2: Select your Template"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

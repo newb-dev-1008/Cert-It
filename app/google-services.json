@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "986889535401",
+    "firebase_url": "https://certificate-generator-b86df.firebaseio.com",
+    "project_id": "certificate-generator-b86df",
+    "storage_bucket": "certificate-generator-b86df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986889535401:android:9395c1ecfa63cb004e4eb8",
+        "android_client_info": {
+          "package_name": "com.college.certificategenerator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986889535401-o9vtpnuhogsdb2149mfadbefd2s2ou3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnrc6oBctjlFipIdFvRHek9hyz_tbI_2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986889535401-o9vtpnuhogsdb2149mfadbefd2s2ou3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
