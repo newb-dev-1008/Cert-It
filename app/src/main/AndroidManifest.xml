@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChooseTemplates"/>
+        <activity android:name=".ShowScannedText"/>
+        <activity android:name=".ScanPhotosActivity"/>
+        <activity android:name=".CapturePhotoActivity"/>
+        <activity android:name=".MainActivity"/>
 
     </application>
 

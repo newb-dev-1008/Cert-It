@@ -1,4 +1,4 @@
-package com.example.certificate;
+package com.college.certificategenerator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
