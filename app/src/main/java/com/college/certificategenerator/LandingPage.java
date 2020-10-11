@@ -14,7 +14,7 @@ public class LandingPage extends AppCompatActivity {
     // Updates
     // 1. Adding voice assistant
 
-    private MaterialButton generateOne, generateMany;
+    private MaterialButton generateOne, generateMany, scanSheet;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class LandingPage extends AppCompatActivity {
 
         generateMany = findViewById(R.id.generateFromCSV);
         generateOne = findViewById(R.id.generateOne);
+        scanSheet = findViewById(R.id.scanCSV);
 
         generateOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +37,14 @@ public class LandingPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 generateMany();
+            }
+        });
+
+        scanSheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingPage.this, ScanPhotosActivity.class);
+                startActivity(intent);
             }
         });
     }
