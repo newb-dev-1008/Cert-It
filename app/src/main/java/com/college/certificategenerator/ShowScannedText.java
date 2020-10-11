@@ -16,7 +16,7 @@ public class ShowScannedText extends AppCompatActivity {
         setContentView(R.layout.show_scanned_text);
 
         scannedText = findViewById(R.id.recognizedTextTV);
-        String s = getIntent().getExtras().toString();
+        String s = getIntent().getExtras().getString("test_text");
         scannedText.setText(s);
     }
 }

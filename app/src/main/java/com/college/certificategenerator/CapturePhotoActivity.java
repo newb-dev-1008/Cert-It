@@ -269,6 +269,8 @@ public class CapturePhotoActivity extends AppCompatActivity {
         Intent intent = new Intent(CapturePhotoActivity.this, ShowScannedText.class);
         intent.putExtra("test_text", textResult);
         startActivity(intent);
+
+        // Needs completion
     }
 
     private void verifyID(InputImage IDImage, final ImageProxy proxyImage){
@@ -276,7 +278,7 @@ public class CapturePhotoActivity extends AppCompatActivity {
 
         Task<Text> result = recognizer.process(IDImage).addOnSuccessListener(new OnSuccessListener<Text>() {
             @Override
-            public void onSuccess(Text text) {
+            public void onSuccess(final Text text) {
                 AlertDialog textRegistered = new MaterialAlertDialogBuilder(CapturePhotoActivity.this)
                         .setTitle("Photo captured.")
                         .setMessage("We will be extracting text out of your image and returning with the generated certificates.")
