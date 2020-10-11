@@ -29,11 +29,23 @@ we want to provide our users with
  - Python
  - Java
 
+ ## Sample Templates
+ 
+ We have created sample templates for our application a few of them are here - 
+ 
+ 
+ ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/Certificate_Template1.png)
+  ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/Certificate_Template2.png)
+
+ 
  ## Sample Images of Our Web App
  
  
- ## Sample Images of Our Android App
  
+ ## Sample Images of Our Android App
+ ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AppHomescreen.jpeg)
+ 
+  ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AppDetails1.jpeg)
  
  ## Additional Features
  
@@ -41,9 +53,12 @@ we want to provide our users with
  
  We have also devised another tool for generating certificates. The Google assistant bot was built using Google's dialogflow. The handling of data and API requests are done using webhooks. the user gives all the necessary details in one sentence. And then accordingly , our program maps the necessary keywords and generates a certificate.
 
- **Insert Image here**
- 
+![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/VoiceAssistant2.jpeg)
+
  ## AR Certificate
  
  This aspect of our project on certificate generation has been the creation of an AR model where the user can see his or her certificate (once generated) The AR certificate is made using Unity and Vuforia. The image(certificate) is loaded on the cover of a book using runtime image targets.
- ** Insert image here**
+
+
+![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AR1.jpeg)
+
