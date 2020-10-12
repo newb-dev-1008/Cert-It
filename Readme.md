@@ -33,19 +33,30 @@ we want to provide our users with
  
  We have created sample templates for our application a few of them are here - 
  
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/Certificate_Template1.png" width="750" height="400">
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/Certificate_Template2.png" width="750" height="400">
+
+
+ ## Web App
  
- ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/Certificate_Template1.png)
-  ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/Certificate_Template2.png)
+ React.js alongside Flask to create it. The backend consists of all our generating and serving APIs. It was deployed using Heroku with Amazon S3 storage bucket to store the certificates. One standout feature about our project is the fact that the user has also been given an option to create a template in our web app. It has a wide number of varieties like . After that , he can choose a .csv file to upload (in a certain format) wherein after preprocessing , he will receive a .zip file containing all the png images of the certificate.
+ 
+ ### Sample Images of Our Web App
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/WebApp8.png" width="750" height="400">
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/WebApp5.png" width="750" height="400">
+ 
+   
+## Android App
+Here the user has the option to upload his data in 3 different ways.
+Firstly, he can enter details for one single certificate , then he can enter a .csv file containing multiple entries.
+
+Lastly he is allowed to take a photo of the spreadsheet in the preferred format , and using CameraX API after which, with the help of Firebase's ML Kit TextRecognizer, the text data will be read, recognized, parsed and processed; post which a certificate will be mapped and given.
 
  
- ## Sample Images of Our Web App
+ ### Sample Images of Our Android App
  
- 
- 
- ## Sample Images of Our Android App
- ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AppHomescreen.jpeg)
- 
-  ![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AppDetails1.jpeg)
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AppHomescreen.jpeg" width="250" height="400">
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AppDetails1.jpeg" width="250" height="400">
  
  ## Additional Features
  
@@ -53,12 +64,12 @@ we want to provide our users with
  
  We have also devised another tool for generating certificates. The Google assistant bot was built using Google's dialogflow. The handling of data and API requests are done using webhooks. the user gives all the necessary details in one sentence. And then accordingly , our program maps the necessary keywords and generates a certificate.
 
-![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/VoiceAssistant2.jpeg)
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/VoiceAssistant2.jpeg" width="250" height="400">
 
  ## AR Certificate
  
  This aspect of our project on certificate generation has been the creation of an AR model where the user can see his or her certificate (once generated) The AR certificate is made using Unity and Vuforia. The image(certificate) is loaded on the cover of a book using runtime image targets.
 
 
-![alt text](https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AR1.jpeg)
+ <img src="https://github.com/newb-dev-1008/Certificate-Generator/blob/master/final_images/AR1.jpeg" width="250" height="400">
 
