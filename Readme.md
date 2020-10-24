@@ -17,7 +17,7 @@ we want to provide our users with
  - Allow the user to upload their own template and generate certificates.
  - Allow the user to upload a snapshot of the handwritten data in a specified format through which our app will recognize the necessary details and map it out to generate a certificate.
  
- ## Tech Stack Used
+ ## Tech Stack
  
  - Firebase
  - Firestore ML Kit
